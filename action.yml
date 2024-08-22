@@ -1,0 +1,64 @@
+name: 'Setup Maven'
+description: 'Configures Artifactory for Maven'
+runs:
+  using: "composite"
+  steps:
+    - name: Configure Maven settings.xml
+      run: |
+        mkdir -p ~/.m2
+        cat > ~/.m2/settings.xml <<EOF
+        <settings>
+          <servers>
+            <server>
+              <username>${{ secrets.ARTIFACTORY_USERNAME }}</username>
+              <password>${{ secrets.ARTIFACTORY_PASSWORD }}</password>
+              <id>central</id>
+            </server>
+            <server>
+              <username>${{ secrets.ARTIFACTORY_USERNAME }}</username>
+              <password>${{ secrets.ARTIFACTORY_PASSWORD }}</password>
+              <id>snapshots</id>
+              </server>
+          </servers>
+          <profiles>
+            <profile>
+              <repositories>
+                <repository>
+                  <snapshots>
+                    <enabled>false</enabled>
+                  </snapshots>
+                  <id>central</id>
+                  <name>abstract-libs-release</name>
+                  <url>${{ secrets.ARTIFACTORY_URL }}/artifactory/abstract-libs-release</url>
+                </repository>
+                <repository>
+                  <snapshots />
+                  <id>snapshots</id>
+                  <name>abstract-libs-snapshot</name>
+                  <url>${{ secrets.ARTIFACTORY_URL }}/artifactory/abstract-libs-snapshot</url>
+                </repository>
+              </repositories>
+              <pluginRepositories>
+                <pluginRepository>
+                  <snapshots>
+                    <enabled>false</enabled>
+                  </snapshots>
+                  <id>central</id>
+                  <name>abstract-libs-release</name>
+                  <url>${{ secrets.ARTIFACTORY_URL }}/artifactory/abstract-libs-release</url>
+                </pluginRepository>
+                <pluginRepository>
+                    <snapshots />
+                    <id>snapshots</id>
+                    <name>abstract-libs-snapshot</name>
+                    <url>${{ secrets.ARTIFACTORY_URL }}/artifactory/abstract-libs-snapshot</url>
+                  </pluginRepository>
+                </pluginRepositories>
+                <id>artifactory</id>
+              </profile>
+            </profiles>
+            <activeProfiles>
+              <activeProfile>artifactory</activeProfile>
+            </activeProfiles>
+          </settings>
+        EOF
