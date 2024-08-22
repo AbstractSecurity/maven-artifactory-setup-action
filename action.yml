@@ -54,13 +54,13 @@ runs:
                   </snapshots>
                   <id>central</id>
                   <name>abstract-libs-release</name>
-                  <url>${{ secrets.ARTIFACTORY_URL }}/artifactory/abstract-libs-release</url>
+                  <url>${{ inputs.url }}/artifactory/abstract-libs-release</url>
                 </pluginRepository>
                 <pluginRepository>
                     <snapshots />
                     <id>snapshots</id>
                     <name>abstract-libs-snapshot</name>
-                    <url>${{ secrets.ARTIFACTORY_URL }}/artifactory/abstract-libs-snapshot</url>
+                    <url>${{ inputs.url }}/artifactory/abstract-libs-snapshot</url>
                   </pluginRepository>
                 </pluginRepositories>
                 <id>artifactory</id>
