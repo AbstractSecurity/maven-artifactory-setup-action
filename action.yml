@@ -7,6 +7,8 @@ inputs:
   password:  # id of input
     description: 'Artifactory password'
     required: true
+  url: 
+    description: 'Artifactory URL'
 runs:
   using: "composite"
   steps:
@@ -36,13 +38,13 @@ runs:
                   </snapshots>
                   <id>central</id>
                   <name>abstract-libs-release</name>
-                  <url>${{ secrets.ARTIFACTORY_URL }}/artifactory/abstract-libs-release</url>
+                  <url>${{ inputs.url }}/artifactory/abstract-libs-release</url>
                 </repository>
                 <repository>
                   <snapshots />
                   <id>snapshots</id>
                   <name>abstract-libs-snapshot</name>
-                  <url>${{ secrets.ARTIFACTORY_URL }}/artifactory/abstract-libs-snapshot</url>
+                  <url>${{ inputs.url }}/artifactory/abstract-libs-snapshot</url>
                 </repository>
               </repositories>
               <pluginRepositories>
