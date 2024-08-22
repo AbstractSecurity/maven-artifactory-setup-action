@@ -11,9 +11,9 @@ inputs:
     description: 'Artifactory URL'
 runs:
   using: "composite"
-  shell: bash
   steps:
     - name: Configure Maven settings.xml
+      shell: bash
       run: |
         mkdir -p ~/.m2
         cat > ~/.m2/settings.xml <<EOF
