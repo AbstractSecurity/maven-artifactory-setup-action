@@ -1,5 +1,12 @@
 name: 'Setup Maven'
 description: 'Configures Artifactory for Maven'
+inputs:
+  username:  # id of input
+    description: 'Artifactory username'
+    required: true
+  password:  # id of input
+    description: 'Artifactory password'
+    required: true
 runs:
   using: "composite"
   steps:
@@ -10,13 +17,13 @@ runs:
         <settings>
           <servers>
             <server>
-              <username>${{ secrets.ARTIFACTORY_USERNAME }}</username>
-              <password>${{ secrets.ARTIFACTORY_PASSWORD }}</password>
+              <username>${{ inputs.username }}</username>
+              <password>${{ inputs.password }}</password>
               <id>central</id>
             </server>
             <server>
-              <username>${{ secrets.ARTIFACTORY_USERNAME }}</username>
-              <password>${{ secrets.ARTIFACTORY_PASSWORD }}</password>
+              <username>${{ inputs.username }}</username>
+              <password>${{ inputs.password }}</password>
               <id>snapshots</id>
               </server>
           </servers>
