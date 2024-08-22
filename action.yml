@@ -11,6 +11,7 @@ inputs:
     description: 'Artifactory URL'
 runs:
   using: "composite"
+  shell: bash
   steps:
     - name: Configure Maven settings.xml
       run: |
