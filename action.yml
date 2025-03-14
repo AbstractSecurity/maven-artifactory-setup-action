@@ -34,6 +34,14 @@ runs:
             <profile>
               <repositories>
                 <repository>
+                  <id>mavencentral</id>
+                  <name>Central Repository</name>
+                  <url>https://repo.maven.apache.org/maven2</url>
+                  <snapshots>
+                      <enabled>false</enabled>
+                  </snapshots>
+                </repository>
+                <repository>
                   <snapshots>
                     <enabled>false</enabled>
                   </snapshots>
@@ -49,6 +57,14 @@ runs:
                 </repository>
               </repositories>
               <pluginRepositories>
+                <pluginRepository>
+                  <id>mavencentral</id>
+                  <name>Central Repository</name>
+                  <url>https://repo.maven.apache.org/maven2</url>
+                  <snapshots>
+                      <enabled>false</enabled>
+                  </snapshots>
+                </pluginRepository>
                 <pluginRepository>
                   <snapshots>
                     <enabled>false</enabled>
